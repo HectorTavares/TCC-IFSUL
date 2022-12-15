@@ -6,7 +6,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
-//@EnableSwagger2 corrigir o erro do swagger 
+//@EnableSwagger2 corrigir o erro do swagger
 @EnableFeignClients
 public class ApiApplication {
 
