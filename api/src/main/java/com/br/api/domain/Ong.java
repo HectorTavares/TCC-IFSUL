@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Ong extends Usuario{
 
-    private static final String SEQUENCE = "AVASDASALIACAO_SEQ";
+    private static final String SEQUENCE = "ONG_SEQ";
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQUENCE)

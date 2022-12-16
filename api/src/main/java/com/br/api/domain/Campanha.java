@@ -26,17 +26,23 @@ public class Campanha {
 
     private LocalDate dataEncerramento;
 
+    private LocalDate dataCriacao;
+
     private String descricao;
 
     @OneToMany()
     @JoinColumn(name = "id_foto", referencedColumnName = "id")
     private List<Foto> fotos;
 
-    @ManyToMany()
+    @ManyToMany
     @JoinTable(
-            name = "interesse_campanha",
-            joinColumns = @JoinColumn(name = "student_id"),
-            inverseJoinColumns = @JoinColumn(name = "course_id"))
+            name = "campanha_interesse",
+            joinColumns = @JoinColumn(name = "campanha_id"),
+            inverseJoinColumns = @JoinColumn(name = "interesse_id"))
     private List<Interesse> interesses;
 
+    @PrePersist
+    public void setDataCriacaoQuandoCriar() {
+        this.dataCriacao = LocalDate.now();
+    }
 }

@@ -25,6 +25,7 @@ public class Animal {
     @SequenceGenerator(name = SEQUENCE, sequenceName = SEQUENCE, allocationSize = 1)
     private Long id;
 
+    @Enumerated(EnumType.STRING)
     private Especie especie;
 
     @Enumerated(EnumType.STRING)
@@ -45,7 +46,7 @@ public class Animal {
 
     private String caracteristicas;
 
-    @OneToMany()
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_foto", referencedColumnName = "id")
     private List<Foto> fotos;
 

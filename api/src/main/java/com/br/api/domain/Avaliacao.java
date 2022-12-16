@@ -22,5 +22,9 @@ public class Avaliacao {
     private String comentario;
 
     private Double nota;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
+    private Usuario avaliador;
 }
 

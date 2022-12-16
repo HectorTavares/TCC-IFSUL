@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -29,4 +31,7 @@ public class Usuario {
 
     protected String telefone;
 
+    @OneToMany
+    @JoinColumn(name = "id_avaliacao", referencedColumnName = "id")
+    private List<Avaliacao> avaliacoesRecebidas;
 }

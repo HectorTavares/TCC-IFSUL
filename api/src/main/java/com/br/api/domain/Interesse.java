@@ -13,7 +13,7 @@ import lombok.*;
 @NoArgsConstructor
 public class Interesse {
 
-    private static final String SEQUENCE = "CAMPANHA_SEQ";
+    private static final String SEQUENCE = "INTERESSE_SEQ";
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQUENCE)
