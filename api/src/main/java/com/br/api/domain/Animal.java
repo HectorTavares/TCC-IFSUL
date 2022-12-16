@@ -1,35 +1,52 @@
 package com.br.api.domain;
 
-import jakarta.persistence.Entity;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.br.api.domain.enumaration.Especie;
+import com.br.api.domain.enumaration.Genero;
+import com.br.api.domain.enumaration.Porte;
+import jakarta.persistence.*;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.util.List;
 
 @Entity
 @Data
-@NoArgsConstructor
+@ToString(of = "id")
+@EqualsAndHashCode(of = "id")
+@Builder
 @AllArgsConstructor
+@NoArgsConstructor
 public class Animal {
+
+    private static final String SEQUENCE = "ANIMAL_SEQ";
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQUENCE)
+    @SequenceGenerator(name = SEQUENCE, sequenceName = SEQUENCE, allocationSize = 1)
+    private Long id;
 
     private Especie especie;
 
-    private String genero; //enum?
+    @Enumerated(EnumType.STRING)
+    private Genero genero;
 
-    private String porte; //enum??
+    @Enumerated(EnumType.STRING)
+    private Porte porte;
 
     private LocalDate dataDeNascimento;
 
     private String nome;
 
+    private Boolean isExcluido;
+
     private String raca;
 
-    private String vacina; //situacaoVacinal??
+    private String situacaoVacinal;
 
     private String caracteristicas;
 
-    private List<String> fotos;
+    @OneToMany()
+    @JoinColumn(name = "id_foto", referencedColumnName = "id")
+    private List<Foto> fotos;
 
 }

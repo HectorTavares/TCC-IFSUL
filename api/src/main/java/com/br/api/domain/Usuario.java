@@ -1,16 +1,23 @@
 package com.br.api.domain;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario {
 
+    private static final String SEQUENCE = "USUARIO_SEQ";
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQUENCE)
+    @SequenceGenerator(name = SEQUENCE, sequenceName = SEQUENCE, allocationSize = 1)
+    private Long id;
 
     protected String nome;
 

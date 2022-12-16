@@ -10,17 +10,14 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Avaliacao {
+public class Foto {
 
-    private static final String SEQUENCE = "AVALIACAO_SEQ";
+    private static final String SEQUENCE = "FOTO_SEQ";
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQUENCE)
     @SequenceGenerator(name = SEQUENCE, sequenceName = SEQUENCE, allocationSize = 1)
     private Long id;
 
-    private String comentario;
-
-    private Double nota;
+    private String url;
 }
-
